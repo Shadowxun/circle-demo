@@ -4,8 +4,19 @@ jobs:
   build:
     docker:
       - image: circleci/node:12
+    branches:
+      only:
+        - main
     steps:
-      - run: echo "A first hello"
-      - run: npm -v
+      - add_ssh_keys:
+          fingerprints:
+            - "a7:fd:89:c8:08:e7:f7:5e:bb:f3:00:0f:12:7a:0f:5e"
+      - checkout
+      - run:
+          name: Insatll
+          command: yarn install
+      - run:
+          name: Build
+          command: yarn build
 
 
