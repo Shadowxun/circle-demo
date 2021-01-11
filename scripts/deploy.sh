@@ -31,8 +31,7 @@ cp -a "../${siteSource}/." .
 ls -la
 
 git add -A
-git commit --allow-empty -m "Deploy to GitHub
-pages [ci skip]"
+git commit --allow-empty -m "Deploy to GitHub pages [ci skip]"
 git push --force --quiet origin gh-pages
 cd ..
 rm -rf gh-pages-branch
