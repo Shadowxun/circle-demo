@@ -12,11 +12,25 @@ jobs:
           fingerprints:
             - "a7:fd:89:c8:08:e7:f7:5e:bb:f3:00:0f:12:7a:0f:5e"
       - checkout
+      - restore_cache:
+          keys:
+            - dependencies-vue-circleci
       - run:
           name: Insatll
           command: yarn install
+      - save_cache:
+          key: dependencies-vue-circleci
+          paths:
+            - node_modules
       - run:
           name: Build
           command: yarn build
+      - run:
+          name: Prepare shell commands
+          command: chmod +x scripts/deploy.sh
+      - run:
+          name: Run Deploy to Github pages
+          command: ./scripts/deploy.sh
+
 
 
