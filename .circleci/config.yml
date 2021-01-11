@@ -1,13 +1,4 @@
 version: 2
-workflows:
-  version: 2
-  nightly:
-    triggers:
-      - schedule:
-          filters:
-            branches:
-              only:
-                - main
 jobs:
   build:
     docker:
@@ -36,6 +27,16 @@ jobs:
       - run:
           name: Run Deploy to Github pages
           command: ./scripts/deploy.sh
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: main
+
+
 
 
 
