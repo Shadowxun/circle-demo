@@ -1,11 +1,13 @@
 version: 2
 workflows:
-  main:
-    jobs:
-      - build:
+  version: 2
+  nightly:
+    triggers:
+      - schedule:
           filters:
             branches:
-              only: /main\/.*/
+              only:
+                - main
 jobs:
   build:
     docker:
