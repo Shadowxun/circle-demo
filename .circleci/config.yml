@@ -1,12 +1,15 @@
 version: 2
-
+workflows:
+  main:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: /main\/.*/
 jobs:
   build:
     docker:
       - image: circleci/node:12
-    branches:
-      only:
-        - main
     steps:
       - add_ssh_keys:
           fingerprints:
