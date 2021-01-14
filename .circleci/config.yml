@@ -1,8 +1,13 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+
+executors:
+  my-executor:
     docker:
       - image: circleci/node:12
+
+jobs:
+  build:
+    executor:my-executor
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -27,15 +32,16 @@ jobs:
       - run:
           name: Run Deploy to Github pages
           command: ./scripts/deploy.sh
+
 workflows:
   version: 2
-  workflow:
+  btd:
     jobs:
       - build:
           filters:
             branches:
-              only: main
-
+              only:
+                - main
 
 
 
