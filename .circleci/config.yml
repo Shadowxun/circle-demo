@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 executors:
   my-executor:
@@ -7,7 +7,7 @@ executors:
 
 jobs:
   build:
-    executor:my-executor
+    executor: my-executor
     steps:
       - add_ssh_keys:
           fingerprints:
